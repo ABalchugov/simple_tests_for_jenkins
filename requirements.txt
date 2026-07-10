@@ -1,6 +1,6 @@
 allure-python-commons
 pytest==9.1.1
-selenium
+selenium==4.9
 selenium-page-factory
 allure-pytest==2.16.0
 python-dotenv==0.20.0
