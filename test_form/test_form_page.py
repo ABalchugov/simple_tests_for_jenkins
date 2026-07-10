@@ -1,7 +1,7 @@
 import pytest
 import allure
-
 from test_form.form_page import FormPage
+
 
 @allure.epic("UI Automation")
 @allure.feature("Text Box Form")
