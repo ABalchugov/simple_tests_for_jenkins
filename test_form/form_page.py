@@ -1,12 +1,13 @@
 from seleniumpagefactory.Pagefactory import PageFactory
 from seleniumpagefactory.Pagefactory import ElementNotVisibleException
+import os
 
 
 class FormPage(PageFactory):
 
     def __init__(self, driver):
         self.driver = driver
-        self.url = "https://qa-guru.github.io/one-page-form/text-box.html"
+        self.url = os.getenv("TEST_URL")
         self.locators = {
             "full_name_locator": ('ID', "userName"),
             "email_locator": ('ID', "userEmail"),
