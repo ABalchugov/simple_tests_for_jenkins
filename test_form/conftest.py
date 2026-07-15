@@ -25,9 +25,8 @@ def pytest_addoption(parser):
     )
     parser.addoption(
         "--headless",
-        default=False,
-        choices=(True, False),
-        help="Browser version to use"
+        choices=["true", "false"],
+        default="false",
     )
     parser.addoption(
         "--window_size",
@@ -40,7 +39,7 @@ def pytest_addoption(parser):
 def driver(request):
     browser = request.config.getoption("--browser")
     browser_version = request.config.getoption("--browser_version")
-    headless = request.config.getoption("--headless")
+    headless = request.config.getoption("--headless").lower() == "true"
     window_size = request.config.getoption("--window_size")
     width_str, height_str = window_size.split("*", 1)
 
