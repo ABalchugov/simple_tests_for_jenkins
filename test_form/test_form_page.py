@@ -20,9 +20,10 @@ def test_positive_form_submission(driver, name, email, current_address, permanen
     form_po.click_submit_button()
 
     output = form_po.get_result_data()
-
-    assert output is not None, "Блок с результатами не отобразился"
-    assert output["name"] == name.strip()
-    assert output["email"] == email.strip()
-    assert output["current_address"] == current_address.strip()
-    assert output["permanent_address"] == permanent_address.strip()
+    with allure.step("Проверить отображение блока результатов"):
+        assert output is not None, "Блок с результатами не отобразился"
+    with allure.step("Проверить введенные данные"):
+        assert output["name"] == name.strip()
+        assert output["email"] == email.strip()
+        assert output["current_address"] == current_address.strip()
+        assert output["permanent_address"] == permanent_address.strip()

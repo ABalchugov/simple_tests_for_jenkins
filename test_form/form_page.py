@@ -1,3 +1,4 @@
+import allure
 from seleniumpagefactory.Pagefactory import PageFactory
 from seleniumpagefactory.Pagefactory import ElementNotVisibleException
 import os
@@ -21,6 +22,7 @@ class FormPage(PageFactory):
             "result_box_permanent_address_locator": ('CSS', '#output #permanentAddress')
         }
 
+    @allure.step("Открыть форму Text Box")
     def open(self):
         self.driver.get(self.url)
 
@@ -36,9 +38,11 @@ class FormPage(PageFactory):
     def fill_permanent_address_field(self, permanent_address):
         self.permanent_address_locator.send_keys(permanent_address)
 
+    @allure.step("Нажать кнопку Submit")
     def click_submit_button(self):
         self.submit_button_locator.click()
 
+    @allure.step("Заполнить форму: {name}, {email}, {current_address}, {permanent_address}")
     def fill_form(self, name="", email="", current_address="", permanent_address=""):
         if name != "":
             self.fill_full_name_field(name)
@@ -49,6 +53,7 @@ class FormPage(PageFactory):
         if permanent_address != "":
             self.fill_permanent_address_field(permanent_address)
 
+    @allure.step("Получить данные из блока результатов")
     def get_result_data(self):
         try:
             if not self.result_box_locator.is_displayed():
