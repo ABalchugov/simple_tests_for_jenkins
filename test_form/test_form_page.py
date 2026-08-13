@@ -90,7 +90,6 @@ def test_empty_form_submission(driver):
     form_po = FormPage(driver)
     form_po.open()
     form_po.click_submit_button()
-    time.sleep(5)
 
     output = form_po.get_result_data()
     if output is not None:
