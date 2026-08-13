@@ -26,15 +26,19 @@ class FormPage(PageFactory):
     def open(self):
         self.driver.get(self.url)
 
+    @allure.step("Заполнить поле Name значением: {name}")
     def fill_full_name_field(self, name):
         self.full_name_locator.set_text(name)
 
+    @allure.step("Заполнить поле Email значением: {email}")
     def fill_email_field(self, email):
         self.email_locator.send_keys(email)
 
+    @allure.step("Заполнить поле Current Address значением: {current_address}")
     def fill_current_address_field(self, current_address):
         self.current_address_locator.send_keys(current_address)
 
+    @allure.step("Заполнить поле Permanent Address значением: {permanent_address}")
     def fill_permanent_address_field(self, permanent_address):
         self.permanent_address_locator.send_keys(permanent_address)
 
@@ -69,6 +73,7 @@ class FormPage(PageFactory):
         return {"name": name, "email": email, "current_address": current_address,
                 "permanent_address": permanent_address}
 
+    @allure.step("Проверить наличие ошибки валидации Email")
     def is_email_error_present(self):
         return not self.driver.execute_script(
             "return arguments[0].checkValidity();",
